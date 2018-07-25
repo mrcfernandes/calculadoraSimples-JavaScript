@@ -13,7 +13,6 @@ class CalcController {
         this._currentDate;
         this.initialize();
         this.initButtonsEvents();
-        this.addEventListenerAll();
         this.initKeyboard();
     }
 
@@ -176,6 +175,9 @@ class CalcController {
                 this._lastNumber = this.getLastItem(false);
             }
             let result = this.getResult();
+            if(result.toString().split('.').length > 1){
+                result = result.toFixed(2);
+            }
             if(last == '%') {
                 result /= 100; 
                 this._operation[result];
